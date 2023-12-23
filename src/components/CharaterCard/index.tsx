@@ -1,7 +1,18 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material'
+import DetailsModal from 'components/DetailsModal'
+import { useState } from 'react'
 import { TCharacter } from 'types'
 
 const CharacterCard = ({ character }: { character: TCharacter }) => {
+  const [openModal, setOpenModal] = useState(false)
+  const handleOpenModal = () => {
+    setOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false)
+  }
+
   return (
     <Card
       style={{
@@ -17,22 +28,30 @@ const CharacterCard = ({ character }: { character: TCharacter }) => {
       />
       <CardContent
         style={{
-          height: 90,
+          height: 100,
           display: 'flex',
           justifyContent: 'space-between',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
+        <Typography variant="h6" gutterBottom>
+          {character.name}
+        </Typography>
+        <Button
+          sx={{
+            maxHeight: 30,
+            border: '1px solid',
+            borderRadius: 1,
           }}
+          onClick={handleOpenModal}
         >
-          <Typography variant="h6" gutterBottom>
-            {character.name}
-          </Typography>
-        </div>
+          Details
+        </Button>
       </CardContent>
+      <DetailsModal
+        detailsItem={character}
+        openModal={openModal}
+        onCloseModal={handleCloseModal}
+      />
     </Card>
   )
 }
