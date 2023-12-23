@@ -3,7 +3,11 @@ import { TCharacter } from 'types'
 
 const CharacterCard = ({ character }: { character: TCharacter }) => {
   return (
-    <Card>
+    <Card
+      style={{
+        height: '100%',
+      }}
+    >
       <CardMedia
         component="img"
         height="90%"

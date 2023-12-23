@@ -1,13 +1,50 @@
-import { Container, Grid } from '@mui/material'
+import { Container, Grid, Typography } from '@mui/material'
 import { isEmpty } from 'lodash'
 import { CharaterCard } from 'components'
 import { useGetCharacters } from 'hooks/endpoints'
 import { TCharacter } from 'types'
+import { useEffect, useState } from 'react'
 
 const CharacterList = () => {
-  const { data: characters } = useGetCharacters()
+  const [fetchCharacterOffset, setFetchCharacterOffset] = useState<number>(0)
+  const [cardItems, setCardItems] = useState<TCharacter[] | []>([])
 
-  if (!characters) return null
+  const {
+    data: characters,
+    isLoading,
+    isFetching,
+    refetch,
+  } = useGetCharacters({
+    offset: fetchCharacterOffset,
+  })
+
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement
+    if (scrollTop + clientHeight >= scrollHeight - 10 && !isLoading) {
+      setFetchCharacterOffset((prevState) => prevState + 30)
+    }
+  }
+
+  useEffect(() => {
+    refetch()
+  }, [fetchCharacterOffset])
+
+  useEffect(() => {
+    if (characters) {
+      setCardItems((prevState) => [...prevState, ...characters])
+    }
+  }, [characters])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isLoading])
+
+  if (!cardItems) return null
+  if (isEmpty(cardItems) && !isLoading) {
+    return <div>No Characters Found ! </div>
+  }
+  console.log(isFetching)
 
   return (
     <Container
@@ -18,22 +55,19 @@ const CharacterList = () => {
       }}
     >
       <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
-        {isEmpty(characters) ? (
-          <div>No Characters Found ! </div>
-        ) : (
-          characters?.map((character: TCharacter) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              sx={{ marginBottom: 7 }}
-              key={character.id}
-            >
-              <CharaterCard character={character} />
-            </Grid>
-          ))
-        )}
+        {cardItems?.map((character: TCharacter) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{ marginBottom: 7 }}
+            key={character.id}
+          >
+            <CharaterCard character={character} />
+          </Grid>
+        ))}
+        {isFetching && <Typography>LOADING...</Typography>}
       </Grid>
     </Container>
   )
