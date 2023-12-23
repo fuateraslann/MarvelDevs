@@ -25,3 +25,31 @@ export const useGetCharacters = ({
     }
   )
 }
+
+export const useGetCharacterComics = ({
+  characterId,
+  enabled,
+}: {
+  characterId: number
+  enabled: boolean
+}): UseQueryResult<TCharacter[]> => {
+  return useQuery(
+    ['characterComics', characterId],
+    async (): Promise<TCharacter[]> => {
+      return await axios
+        .get(`/v1/public/characters/${characterId}/comics`, {
+          params: { limit: 10 },
+        })
+        .then((response) => {
+          return response.data.data.results
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    {
+      enabled,
+      refetchOnWindowFocus: false,
+    }
+  )
+}

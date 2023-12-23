@@ -7,6 +7,7 @@ import {
   Button,
   Grid,
 } from '@mui/material'
+import { useGetCharacterComics } from 'hooks/endpoints'
 
 import { TCharacter } from 'types'
 interface IDetailsModalProps {
@@ -19,6 +20,10 @@ const DetailsModal = ({
   onCloseModal,
   openModal,
 }: IDetailsModalProps) => {
+  const { data } = useGetCharacterComics({
+    characterId: detailsItem.id,
+    enabled: openModal,
+  })
   return (
     <Dialog open={openModal} onClose={onCloseModal}>
       <DialogTitle>Details Of {detailsItem.name}</DialogTitle>
@@ -40,7 +45,11 @@ const DetailsModal = ({
             {detailsItem.name}
           </Typography>
         </Grid>
-        <Grid flex={1}>{detailsItem.description}</Grid>
+        <Grid flex={1}>
+          {detailsItem.description !== ''
+            ? detailsItem.description
+            : 'No Description'}
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button onClick={onCloseModal}>Close</Button>
