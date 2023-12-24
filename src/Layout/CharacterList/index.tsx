@@ -1,6 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material'
 import { isEmpty } from 'lodash'
-import { CharaterCard } from 'components'
+import { CharacterCard } from 'components'
 import { useGetCharacters } from 'hooks/endpoints'
 import { TCharacter } from 'types'
 import { useEffect, useState } from 'react'
@@ -64,7 +64,7 @@ const CharacterList = () => {
             sx={{ marginBottom: 7 }}
             key={character.id}
           >
-            <CharaterCard character={character} />
+            <CharacterCard character={character} />
           </Grid>
         ))}
         {isFetching && <Typography>LOADING...</Typography>}
