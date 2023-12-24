@@ -26,6 +26,10 @@ const DetailsModal = ({
     characterId: detailsItem.id,
     enabled: openModal,
   })
+
+  const imageSrc =
+    detailsItem.thumbnail.path + '.' + detailsItem.thumbnail.extension
+
   return (
     <Dialog open={openModal} onClose={onCloseModal}>
       <DialogTitle>
@@ -46,14 +50,7 @@ const DetailsModal = ({
           }}
         >
           <Grid flex={2}>
-            <img
-              style={{ width: '90%', height: '90%' }}
-              src={
-                detailsItem.thumbnail.path +
-                '.' +
-                detailsItem.thumbnail.extension
-              }
-            />
+            <img style={{ width: '90%', height: '90%' }} src={imageSrc} />
             <Typography variant="h6" gutterBottom>
               {detailsItem.name}
             </Typography>

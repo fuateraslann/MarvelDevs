@@ -14,11 +14,11 @@ const CharacterCard = ({ character }: { character: TCharacter }) => {
   }
 
   return (
-    <>
-      <Card
-        name={character.name}
-        imgSrc={character.thumbnail.path + '.' + character.thumbnail.extension}
-        extras={
+    <Card
+      name={character.name}
+      imgSrc={character.thumbnail.path + '.' + character.thumbnail.extension}
+      extras={
+        <>
           <Button
             sx={{
               maxHeight: 30,
@@ -29,14 +29,14 @@ const CharacterCard = ({ character }: { character: TCharacter }) => {
           >
             Details
           </Button>
-        }
-      />
-      <DetailsModal
-        detailsItem={character}
-        openModal={openModal}
-        onCloseModal={handleCloseModal}
-      />
-    </>
+          <DetailsModal
+            detailsItem={character}
+            openModal={openModal}
+            onCloseModal={handleCloseModal}
+          />
+        </>
+      }
+    />
   )
 }
 
