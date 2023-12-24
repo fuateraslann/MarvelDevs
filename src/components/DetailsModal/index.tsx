@@ -31,10 +31,12 @@ const DetailsModal = ({
     detailsItem.thumbnail.path + '.' + detailsItem.thumbnail.extension
 
   return (
-    <Dialog open={openModal} onClose={onCloseModal}>
-      <DialogTitle>
-        <h4> Details Of {detailsItem.name}</h4>
-      </DialogTitle>
+    <Dialog
+      data-testid={'details-modal-test-id'}
+      open={openModal}
+      onClose={onCloseModal}
+    >
+      <DialogTitle>Details Of {detailsItem.name}</DialogTitle>
       <DialogContent
         sx={{
           display: 'flex',

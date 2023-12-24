@@ -20,12 +20,14 @@ const ComicsList = ({
         gridTemplateColumns: 'repeat(auto-fill,minmax(160px,1fr)) !important',
         gridAutoColumns: 'minmax(160px, 1fr)',
       }}
+      data-testid="comics-list"
     >
       {comics?.map((e) => {
         return (
           <ImageListItem key={e.id}>
             <img src={e.thumbnail.path + '.' + e.thumbnail.extension} />
             <ImageListItemBar
+              data-testid="image-list-item-bar"
               title={e.title}
               actionIcon={
                 <Tooltip title={e.title}>

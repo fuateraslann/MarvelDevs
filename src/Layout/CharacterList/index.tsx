@@ -44,7 +44,6 @@ const CharacterList = () => {
   if (isEmpty(cardItems) && !isLoading) {
     return <div>No Characters Found ! </div>
   }
-  console.log(isFetching)
 
   return (
     <Container
