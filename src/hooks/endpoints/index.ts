@@ -1,7 +1,7 @@
 import { useQuery, UseQueryResult } from 'react-query'
 
 import { axios } from 'utils'
-import { TCharacter } from 'types'
+import { TCharacter, TComics } from 'types'
 
 export const useGetCharacters = ({
   offset = 0,
@@ -32,12 +32,12 @@ export const useGetCharacterComics = ({
 }: {
   characterId: number
   enabled: boolean
-}): UseQueryResult<TCharacter[]> => {
+}): UseQueryResult<TComics[]> => {
   return useQuery(
     ['characterComics', characterId],
-    async (): Promise<TCharacter[]> => {
+    async (): Promise<TComics[]> => {
       return await axios
-        .get(`/v1/public/characters/${characterId}/comics`, {
+        .get(`/v1/public/characters/${characterId}/comics?orderBy=-focDate`, {
           params: { limit: 10 },
         })
         .then((response) => {

@@ -18,3 +18,19 @@ export type TCharacter = {
     returned: number
   }
 }
+type TPublishDates = {
+  type: 'focDate' | 'onsaleDate' | 'unlimitedDate' | 'digitalPurchaseDate'
+  date: string
+}
+export type TComics = {
+  id: number
+  title: string
+  description: string
+  pageCount: string
+  resourceURI: string
+  dates: TPublishDates[]
+  thumbnail: {
+    path: string
+    extension: 'jpg' | 'png' | 'svg'
+  }
+}
