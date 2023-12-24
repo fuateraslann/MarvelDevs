@@ -14,7 +14,8 @@
 - Unfortunately , I had limited time to make this task because of busy at my work so I couldn't write the test in detail.
 - I would like to split all components for common use like I did in character card .
 - I would like to write open-closed reusable components if I had enough time.
-- I can show the comics with more detail .
+- I dould show the comics with more detail .
+- I could write some custom styled components to visualize better my app if I had enough time .
 
 ## Online Demo
 
