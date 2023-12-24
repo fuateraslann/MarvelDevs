@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce-betalimited",
+  "name": "marvel-devs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +50,8 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.202"
+    "@babel/preset-env": "^7.23.6",
+    "@types/lodash": "^4.14.202",
+    "babel-jest": "^29.7.0"
   }
 }
