@@ -6,7 +6,8 @@
 - I provided the desired data flow .
 - I used the react-query library , which I found effective, in the application for data fetching and state management.
 - I made a responsive design with MUI Grid component.
--
+- I wrote the snapshot test and unit test .
+- Comic list is horizontal . You can scroll to see other comics.
 
 ## I am sad with
 
@@ -17,7 +18,7 @@
 
 ## Online Demo
 
--
+- https://marvel-devs.netlify.app/
 
 ## Available Scripts
 
