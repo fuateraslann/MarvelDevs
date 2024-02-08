@@ -1,21 +1,4 @@
-# Pointo Marvel Devs
-
-## What I have done ?
-
-- I created the desired design in the application. I used material UI components when creating this design. I had to add inline-css at some points.
-- I provided the desired data flow .
-- I used the react-query library , which I found effective, in the application for data fetching and state management.
-- I made a responsive design with MUI Grid component.
-- I wrote the snapshot test and unit test .
-- Comic list is horizontal . You can scroll to see other comics.
-
-## I am sad with
-
-- Unfortunately , I had limited time to make this task because of busy at my work so I couldn't write the test in detail.
-- I would like to split all components for common use like I did in character card .
-- I would like to write open-closed reusable components if I had enough time.
-- I dould show the comics with more detail .
-- I could write some custom styled components to visualize better my app if I had enough time .
+# Marvel Devs
 
 ## Online Demo
 
